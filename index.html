@@ -14,10 +14,17 @@
             font-family:Arial, sans-serif;
         }
 
+        html{
+            scroll-behavior:smooth;
+        }
+
         body{
             background:#111;
             color:white;
+            overflow-x:hidden;
         }
+
+        /* NAVBAR */
 
         nav{
             display:flex;
@@ -27,11 +34,27 @@
             background:black;
             position:sticky;
             top:0;
+            z-index:1000;
         }
 
         nav h1{
             color:red;
             font-size:32px;
+            animation:pulse 2s infinite;
+        }
+
+        @keyframes pulse{
+            0%{
+                transform:scale(1);
+            }
+
+            50%{
+                transform:scale(1.1);
+            }
+
+            100%{
+                transform:scale(1);
+            }
         }
 
         nav ul{
@@ -47,11 +70,14 @@
             color:white;
             text-decoration:none;
             font-size:18px;
+            transition:0.3s;
         }
 
         nav ul li a:hover{
             color:red;
         }
+
+        /* HERO SECTION */
 
         .hero{
             height:90vh;
@@ -60,12 +86,51 @@
             justify-content:center;
             align-items:center;
             text-align:center;
+            position:relative;
+            overflow:hidden;
+        }
+
+        .hero::before{
+            content:'';
+            position:absolute;
+            width:200%;
+            height:200%;
+            background:rgba(255,0,0,0.08);
+            animation:rotateBg 15s linear infinite;
+        }
+
+        @keyframes rotateBg{
+
+            from{
+                transform:rotate(0deg);
+            }
+
+            to{
+                transform:rotate(360deg);
+            }
         }
 
         .hero-content{
             background:rgba(0,0,0,0.6);
             padding:40px;
             border-radius:15px;
+            position:relative;
+            z-index:2;
+
+            animation:fadeIn 2s ease;
+        }
+
+        @keyframes fadeIn{
+
+            from{
+                opacity:0;
+                transform:translateY(50px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
         }
 
         .hero h2{
@@ -78,6 +143,8 @@
             margin-bottom:20px;
         }
 
+        /* BUTTONS */
+
         .btn{
             padding:12px 30px;
             background:red;
@@ -86,11 +153,17 @@
             font-size:18px;
             cursor:pointer;
             border-radius:5px;
+            transition:0.3s;
+            box-shadow:0 0 10px red;
         }
 
         .btn:hover{
             background:darkred;
+            transform:scale(1.08);
+            box-shadow:0 0 25px red;
         }
+
+        /* SECTIONS */
 
         section{
             padding:60px 10%;
@@ -101,72 +174,149 @@
             margin-bottom:40px;
             font-size:40px;
             color:red;
+            position:relative;
+            animation:slideDown 1s ease;
         }
+
+        section h2::after{
+            content:'';
+            width:80px;
+            height:4px;
+            background:red;
+            position:absolute;
+            left:50%;
+            bottom:-10px;
+            transform:translateX(-50%);
+        }
+
+        @keyframes slideDown{
+
+            from{
+                opacity:0;
+                transform:translateY(-30px);
+            }
+
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        /* PLANS */
+
         .plans{
             display:flex;
             justify-content:center;
             gap:30px;
             flex-wrap:wrap;
         }
+
         .plan-card{
             background:#222;
             padding:30px;
             width:280px;
             border-radius:15px;
             text-align:center;
-            transition:0.3s;
+            transition:0.4s;
         }
+
         .plan-card:hover{
-            transform:translateY(-10px);
+            transform:translateY(-15px) scale(1.05);
+            box-shadow:0 0 25px rgba(255,0,0,0.7);
         }
+
         .plan-card h3{
             font-size:28px;
             margin-bottom:15px;
         }
+
         .price{
             font-size:35px;
             color:red;
             margin-bottom:15px;
         }
+
+        /* TRAINERS */
+
         .trainers{
             display:flex;
             justify-content:center;
             gap:30px;
             flex-wrap:wrap;
         }
+
         .trainer-card{
             background:#222;
             border-radius:15px;
             overflow:hidden;
             width:300px;
             text-align:center;
+
+            animation:float 4s ease-in-out infinite;
+            transition:0.4s;
         }
+
+        .trainer-card:hover{
+            box-shadow:0 0 25px rgba(255,0,0,0.7);
+        }
+
+        @keyframes float{
+
+            0%{
+                transform:translateY(0px);
+            }
+
+            50%{
+                transform:translateY(-15px);
+            }
+
+            100%{
+                transform:translateY(0px);
+            }
+        }
+
         .trainer-card img{
             width:100%;
             height:300px;
             object-fit:cover;
+            transition:0.5s;
         }
+
+        .trainer-card:hover img{
+            transform:scale(1.1);
+        }
+
         .trainer-card h3{
             margin-top:15px;
         }
+
         .trainer-card p{
             padding:15px;
         }
+
+        /* TABLE */
+
         table{
             width:100%;
             border-collapse:collapse;
             text-align:center;
         }
+
         table th, table td{
             border:1px solid #444;
             padding:15px;
         }
+
         table th{
             background:red;
         }
+
         table td{
             background:#222;
         }
+
+        /* BMI */
+
         .bmi-box{
             max-width:400px;
             margin:auto;
@@ -175,6 +325,7 @@
             border-radius:15px;
             text-align:center;
         }
+
         .bmi-box input{
             width:100%;
             padding:12px;
@@ -182,11 +333,38 @@
             border:none;
             border-radius:5px;
         }
+
         #result{
             margin-top:20px;
             font-size:24px;
             color:red;
+            animation:blink 1s infinite alternate;
         }
+
+        @keyframes blink{
+
+            from{
+                opacity:0.6;
+            }
+
+            to{
+                opacity:1;
+            }
+        }
+
+        /* CONTACT */
+
+        .contact-box{
+            max-width:500px;
+            margin:auto;
+            background:#222;
+            padding:30px;
+            border-radius:15px;
+            text-align:center;
+            line-height:2;
+        }
+
+        /* FOOTER */
 
         footer{
             background:black;
@@ -194,6 +372,22 @@
             padding:20px;
             margin-top:40px;
         }
+
+        /* SCROLL ANIMATION */
+
+        .hidden{
+            opacity:0;
+            transform:translateY(50px);
+            transition:all 1s;
+        }
+
+        .show{
+            opacity:1;
+            transform:translateY(0);
+        }
+
+        /* MOBILE */
+
         @media(max-width:768px){
 
             nav{
@@ -201,13 +395,22 @@
             }
 
             nav ul{
+                flex-direction:column;
+                align-items:center;
                 margin-top:15px;
+            }
+
+            nav ul li{
+                margin:10px 0;
             }
 
             .hero h2{
                 font-size:40px;
             }
 
+            .hero p{
+                font-size:18px;
+            }
         }
 
     </style>
@@ -215,75 +418,142 @@
 </head>
 
 <body>
+
+    <!-- NAVBAR -->
+
     <nav>
+
         <h1>FitZone</h1>
+
         <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#plans">Plans</a></li>
             <li><a href="#trainers">Trainers</a></li>
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#bmi">BMI</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
+
     </nav>
+
+    <!-- HERO -->
+
     <section class="hero" id="home">
 
         <div class="hero-content">
+
             <h2>Transform Your Body</h2>
+
             <p>Push Harder Than Yesterday</p>
 
             <button class="btn">Join Now</button>
+
         </div>
 
     </section>
+
+    <!-- PLANS -->
+
     <section id="plans">
+
         <h2>Membership Plans</h2>
+
         <div class="plans">
+
             <div class="plan-card">
+
                 <h3>Basic</h3>
+
                 <div class="price">₹999</div>
+
                 <p>Gym Access</p>
+
                 <p>Cardio Area</p>
+
                 <button class="btn">Choose Plan</button>
+
             </div>
+
             <div class="plan-card">
+
                 <h3>Standard</h3>
+
                 <div class="price">₹1999</div>
+
                 <p>Gym + Cardio</p>
+
                 <p>Workout Guide</p>
+
                 <button class="btn">Choose Plan</button>
+
             </div>
+
             <div class="plan-card">
+
                 <h3>Premium</h3>
+
                 <div class="price">₹2999</div>
+
                 <p>Personal Trainer</p>
+
                 <p>Diet Plan</p>
+
                 <button class="btn">Choose Plan</button>
-            </div>
-        </div>
-    <section id="trainers">
-       <h2>Trainer Profiles</h2>
-        <div class="trainers">
-            <div class="trainer-card">
-                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=800&auto=format&fit=crop">
-                <h3>John Mathew</h3>
-                <p>Weight Training Expert</p>
+
             </div>
 
-            <div class="trainer-card">
-                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop">
-                <h3>Sarah Fitness</h3>
-                <p>Yoga & Cardio Trainer</p>
-            </div>
-
-            <div class="trainer-card">
-                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop">
-                <h3>Rahul Das</h3>
-                <p>Bodybuilding Coach</p>
-            </div>
         </div>
+
     </section>
+
+    <!-- TRAINERS -->
+
+    <section id="trainers">
+
+        <h2>Trainer Profiles</h2>
+
+        <div class="trainers">
+
+            <div class="trainer-card">
+
+                <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=800&auto=format&fit=crop">
+
+                <h3>John Mathew</h3>
+
+                <p>Weight Training Expert</p>
+
+            </div>
+
+            <div class="trainer-card">
+
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=800&auto=format&fit=crop">
+
+                <h3>Sarah Fitness</h3>
+
+                <p>Yoga & Cardio Trainer</p>
+
+            </div>
+
+            <div class="trainer-card">
+
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=800&auto=format&fit=crop">
+
+                <h3>Rahul Das</h3>
+
+                <p>Bodybuilding Coach</p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- SCHEDULE -->
+
     <section id="schedule">
+
         <h2>Workout Schedule</h2>
+
         <table>
 
             <tr>
@@ -330,6 +600,8 @@
 
     </section>
 
+    <!-- BMI -->
+
     <section id="bmi">
 
         <h2>BMI Calculator</h2>
@@ -341,7 +613,9 @@
             <input type="number" id="height" placeholder="Enter Height in Meters">
 
             <button class="btn" onclick="calculateBMI()">
+
                 Calculate BMI
+
             </button>
 
             <div id="result"></div>
@@ -350,41 +624,102 @@
 
     </section>
 
+    <!-- CONTACT -->
+
+    <section id="contact">
+
+        <h2>Contact Us</h2>
+
+        <div class="contact-box">
+
+            <p>Email: fitzone@gmail.com</p>
+
+            <p>Phone: +91 9876543210</p>
+
+            <p>Location: Pala, Kerala</p>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
     <footer>
+
         <p>© 2026 FitZone Gym | All Rights Reserved</p>
+
     </footer>
 
     <script>
 
+        /* BMI CALCULATOR */
+
         function calculateBMI(){
 
-            let weight = document.getElementById("weight").value;
+            let weight = parseFloat(document.getElementById("weight").value);
 
-            let height = document.getElementById("height").value;
+            let height = parseFloat(document.getElementById("height").value);
+
+            if(!weight || !height || height <= 0){
+
+                document.getElementById("result").innerHTML =
+                "Please enter valid values";
+
+                return;
+            }
 
             let bmi = weight / (height * height);
 
             let result = "";
 
             if(bmi < 18.5){
+
                 result = "Underweight";
             }
 
             else if(bmi >= 18.5 && bmi < 25){
+
                 result = "Normal Weight";
             }
 
             else if(bmi >= 25 && bmi < 30){
+
                 result = "Overweight";
             }
 
             else{
+
                 result = "Obese";
             }
 
             document.getElementById("result").innerHTML =
             "Your BMI is " + bmi.toFixed(2) + " (" + result + ")";
         }
+
+        /* SCROLL ANIMATION */
+
+        const hiddenElements = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver((entries)=>{
+
+            entries.forEach((entry)=>{
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add("show");
+                }
+
+            });
+
+        });
+
+        hiddenElements.forEach((el)=>{
+
+            el.classList.add("hidden");
+
+            observer.observe(el);
+
+        });
 
     </script>
 
