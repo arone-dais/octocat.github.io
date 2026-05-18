@@ -24,8 +24,6 @@
             overflow-x:hidden;
         }
 
-        /* NAVBAR */
-
         nav{
             display:flex;
             justify-content:space-between;
@@ -77,8 +75,6 @@
             color:red;
         }
 
-        /* HERO SECTION */
-
         .hero{
             height:90vh;
             background:url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop') no-repeat center center/cover;
@@ -89,7 +85,6 @@
             position:relative;
             overflow:hidden;
         }
-
         .hero::before{
             content:'';
             position:absolute;
@@ -98,13 +93,11 @@
             background:rgba(255,0,0,0.08);
             animation:rotateBg 15s linear infinite;
         }
-
         @keyframes rotateBg{
 
             from{
                 transform:rotate(0deg);
             }
-
             to{
                 transform:rotate(360deg);
             }
@@ -143,8 +136,6 @@
             margin-bottom:20px;
         }
 
-        /* BUTTONS */
-
         .btn{
             padding:12px 30px;
             background:red;
@@ -162,9 +153,6 @@
             transform:scale(1.08);
             box-shadow:0 0 25px red;
         }
-
-        /* SECTIONS */
-
         section{
             padding:60px 10%;
         }
@@ -201,9 +189,6 @@
                 transform:translateY(0);
             }
         }
-
-        /* PLANS */
-
         .plans{
             display:flex;
             justify-content:center;
@@ -235,8 +220,6 @@
             color:red;
             margin-bottom:15px;
         }
-
-        /* TRAINERS */
 
         .trainers{
             display:flex;
@@ -293,9 +276,6 @@
         .trainer-card p{
             padding:15px;
         }
-
-        /* TABLE */
-
         table{
             width:100%;
             border-collapse:collapse;
@@ -314,8 +294,6 @@
         table td{
             background:#222;
         }
-
-        /* BMI */
 
         .bmi-box{
             max-width:400px;
@@ -351,9 +329,6 @@
                 opacity:1;
             }
         }
-
-        /* CONTACT */
-
         .contact-box{
             max-width:500px;
             margin:auto;
@@ -364,16 +339,12 @@
             line-height:2;
         }
 
-        /* FOOTER */
-
         footer{
             background:black;
             text-align:center;
             padding:20px;
             margin-top:40px;
         }
-
-        /* SCROLL ANIMATION */
 
         .hidden{
             opacity:0;
@@ -385,8 +356,6 @@
             opacity:1;
             transform:translateY(0);
         }
-
-        /* MOBILE */
 
         @media(max-width:768px){
 
@@ -419,8 +388,6 @@
 
 <body>
 
-    <!-- NAVBAR -->
-
     <nav>
 
         <h1>FitZone</h1>
@@ -436,7 +403,6 @@
 
     </nav>
 
-    <!-- HERO -->
 
     <section class="hero" id="home">
 
@@ -451,8 +417,6 @@
         </div>
 
     </section>
-
-    <!-- PLANS -->
 
     <section id="plans">
 
@@ -506,8 +470,6 @@
 
     </section>
 
-    <!-- TRAINERS -->
-
     <section id="trainers">
 
         <h2>Trainer Profiles</h2>
@@ -547,8 +509,6 @@
         </div>
 
     </section>
-
-    <!-- SCHEDULE -->
 
     <section id="schedule">
 
@@ -600,8 +560,6 @@
 
     </section>
 
-    <!-- BMI -->
-
     <section id="bmi">
 
         <h2>BMI Calculator</h2>
@@ -624,8 +582,6 @@
 
     </section>
 
-    <!-- CONTACT -->
-
     <section id="contact">
 
         <h2>Contact Us</h2>
@@ -642,8 +598,6 @@
 
     </section>
 
-    <!-- FOOTER -->
-
     <footer>
 
         <p>© 2026 FitZone Gym | All Rights Reserved</p>
@@ -651,8 +605,6 @@
     </footer>
 
     <script>
-
-        /* BMI CALCULATOR */
 
         function calculateBMI(){
 
@@ -695,8 +647,6 @@
             document.getElementById("result").innerHTML =
             "Your BMI is " + bmi.toFixed(2) + " (" + result + ")";
         }
-
-        /* SCROLL ANIMATION */
 
         const hiddenElements = document.querySelectorAll("section");
 
